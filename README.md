@@ -6,10 +6,10 @@ Welcome to Student Management System REST API!
 To get Started
 
 1. Clone the repository
-2. Install the modules "npm i" 
-3. "npm audit fix"
-4. "npm start"
-5. Browse the URL "localhost:3000"
+3. Install node modules "npm i" 
+4. "npm audit fix"
+5. "npm start"
+6. Browse the URL "localhost:3000"
  
 Here are the list of routes that'll entered at the end of URL:
 
