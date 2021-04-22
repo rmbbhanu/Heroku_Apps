@@ -1,7 +1,6 @@
-# Heroku_Apps
-This will include all apps which have been deployed to Heroku
+# Stark Fortress API
 
-Welcome to Student Management System REST API!
+## Welcome to Student Management System REST API!
 
 To get Started
 
