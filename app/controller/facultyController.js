@@ -44,6 +44,11 @@ exports.read_a_faculty = function(req, res) {
     res.json(faculty);
   });
 };
+exports.faculty_count= (req,res)=>{
+  Faculty.getFacultyCount((err,facultyCount)=>{
+    err? res.send(err): res.send(facultyCount)
+  });
+}
 
 
 exports.update_a_faculty = function(req, res) {

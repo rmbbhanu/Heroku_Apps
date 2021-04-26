@@ -61,6 +61,12 @@ Department.getAllDepartment = function (result) {
                 }
             });
 };
+Department.getDepartmentCount = function(result){
+    sql.query("SELECT COUNT(*) from departments",(err,res)=>{
+        err ? result(null,err) : result(null,res);
+        // console.log(err)
+    });
+}
 Department.updateById = function(id, department, result){
   sql.query("UPDATE departments SET department=?,hod=? WHERE d_id = ?", [department.department,department.hod,id], function (err, res) {
           if(err) {

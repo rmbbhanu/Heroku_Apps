@@ -5,14 +5,16 @@ var Notification = require('../model/notificationModel.js');
 exports.list_all_notifications = function(req, res) {
   Notification.getAllnotification(function(err, notification) {
 
-    console.log('controller')
-    if (err)
-      res.send(err);
-      // console.log('res', notification);
-    res.send(notification);
+    console.log('Notification Controller')
+    err? res.send(err): res.send(notification)
   });
 };
-
+exports.notification_count= (req,res)=>{
+  Notification.getNotificationCount((err,notificationCount)=>{
+    console.log("Notification Count Controller");
+    err? res.send(err): res.json(notificationCount)
+  });
+}
 
 
 exports.create_a_notification = function(req, res) 

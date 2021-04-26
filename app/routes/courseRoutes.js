@@ -6,6 +6,9 @@ module.exports = function(app) {
   app.route('/courses')
     .get(Course.list_all_courses)
     .post(Course.create_a_course);
+  
+  app.route('/courses/count')
+  .get(Course.course_count);
 
    app.route('/courses/:courseId')
     .get(Course.read_a_course)

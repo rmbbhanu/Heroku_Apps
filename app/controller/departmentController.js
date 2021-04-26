@@ -4,15 +4,15 @@ var Department = require('../model/departmentModel');
 
 exports.list_all_departments = function(req, res) {
     Department.getAllDepartment(function(err, department) {
-
-    console.log('controller')
-    if (err)
-      res.send(err);
-      // console.log('res', student);
-    res.send(department);
+    console.log('Department Controller')
+    err ? res.send(err) : res.send(department)
   });
 };
-
+exports.department_count = function(req,res){
+  Department.getDepartmentCount((err,departmentCount)=>{
+    err ? res.send(err) : res.send(departmentCount);
+  });
+}
 
 
 exports.create_a_department = function(req, res) {

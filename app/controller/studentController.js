@@ -5,13 +5,22 @@ var Student = require('../model/studentModel.js');
 exports.list_all_students = function(req, res) {
   Student.getAllStudent(function(err, student) {
 
-    console.log('controller')
-    if (err)
-      res.send(err);
-      // console.log('res', student);
-    res.send(student);
+    console.log('Student Controller');
+    err? res.send(err): res.send(student)
+    
   });
 };
+
+exports.count_students = function(req,res){
+  Student.getStudentCount(function(err,studentCount){
+    console.log('getting students count from controller')
+    err? res.send(err): res.send(studentCount)
+    // if(err)
+    //   res.send(err);
+    // console.log("Student Count: ",studentCount)
+    // res.send(studentCount);
+  });
+}
 
 
 

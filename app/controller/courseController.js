@@ -5,13 +5,22 @@ var Course = require('../model/courseModel.js');
 exports.list_all_courses = function(req, res) {
   Course.getAllCourse(function(err, course) {
 
-    console.log('controller')
-    if (err)
-      res.send(err);
-      // console.log('res', course);
-    res.send(course);
+    console.log('Course Controller')
+    err? res.send(err): res.json(course)
+    // if (err)
+    //   res.send(err);
+    //   // console.log('res', course);
+    // res.send(course);
   });
 };
+
+exports.course_count =(req,res)=>{
+  Course.getCourseCount((err,courseCount)=>{
+    console.log("Getting course count");
+    err ? res.send(err) : res.send(courseCount); console.log("Course Count:",courseCount); 
+    // alert("Course Count:",courseCount)
+  });
+}
 
 
 
@@ -57,8 +66,6 @@ exports.update_a_course = function(req, res) {
 
 
 exports.delete_a_course = function(req, res) {
-
-
   Course.remove( req.params.courseId, function(err, course) {
     if (err)
       res.send(err);

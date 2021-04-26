@@ -7,8 +7,6 @@ var Course = function(course){
     this.course_name=course.course_name;
     this.faculty_name=course.faculty_name;
     this.department=course.department;
-    
-
 };
 Course.createCourse = function (newCourse, result) {
         sql.query("INSERT INTO course set ?", newCourse, function (err, res) {
@@ -43,18 +41,20 @@ Course.getCourseById = function (courseId, result) {
 };
 Course.getAllCourse = function (result) {
         sql.query("Select * from course", function (err, res) {
-
                 if(err) {
                     console.log("error: ", err);
                     result(null, err);
-                }
-                else{
-                //   console.log('courses : ', res);
-
-                 result(null, res);
-                }
+        }else{
+            result(null, res);
+        }
             });
 };
+Course.getCourseCount = function(result){
+    sql.query("Select COUNT(*) from course",(err,res)=>
+    err ? result(null,err) : result(null,res)
+    );
+}
+
 Course.updateById = function(id, course, result){
   sql.query("UPDATE course SET course_name=?,faculty_name=?,department=? WHERE c_id = ?", [course.course_name,course.faculty_name,course.department,id], function (err, res) {
           if(err) {

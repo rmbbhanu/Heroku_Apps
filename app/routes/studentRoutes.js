@@ -14,4 +14,7 @@ module.exports = function(app) {
 
     app.route('/students/name/:studentFname')
      .get(Student.read_a_studentFname)
+
+     app.route('/students/count')
+     .get(Student.count_students)
     };

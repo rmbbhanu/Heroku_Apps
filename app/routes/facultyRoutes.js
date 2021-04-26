@@ -7,6 +7,10 @@ module.exports = function(app) {
     .get(Faculty.list_all_faculties)
     .post(Faculty.create_a_faculty);
 
+    app.route('/faculties/count')
+      .get(Faculty.faculty_count);
+
+
    app.route('/faculties/:facultyId')
     .get(Faculty.read_a_faculty)
     .put(Faculty.update_a_faculty)

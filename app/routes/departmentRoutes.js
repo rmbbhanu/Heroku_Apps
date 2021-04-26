@@ -7,6 +7,9 @@ module.exports = function(app) {
     .get(Department.list_all_departments)
     .post(Department.create_a_department);
 
+    app.route('/departments/count')
+      .get(Department.department_count);
+
    app.route('/departments/:departmentId')
     .get(Department.read_a_department)
     .put(Department.update_a_department)

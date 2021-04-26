@@ -53,6 +53,17 @@ Student.getStudentById = function (studentId, result) {
             });
 };
 
+Student.getStudentCount = function(result){
+    sql.query("Select COUNT(*) from students",function(err,res){
+        if(err){
+            console.log("Error: ",err);
+            result(null,err);
+        }else{
+            result(null,res);
+        }
+    });
+}
+
 Student.getStudentByFname = function (studentFname, result) {
     sql.query("Select * from students where fname = ? ", studentFname, function (err, res) {
             if(err) {
@@ -68,7 +79,6 @@ Student.getStudentByFname = function (studentFname, result) {
 
 Student.getAllStudent = function (result) {
         sql.query("Select * from students", function (err, res) {
-
                 if(err) {
                     console.log("error: ", err);
                     result(null, err);

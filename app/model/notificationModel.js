@@ -41,18 +41,14 @@ notification.getnotificationById = function (id, result) {
 };
 notification.getAllnotification = function (result) {
         sql.query("Select * from notification", function (err, res) {
-
-                if(err) {
-                    console.log("error: ", err);
-                    result(null, err);
-                }
-                else{
-                //   console.log('notifications : ', res);
-
-                 result(null, res);
-                }
+                err? result(null,err): result(null,res)
             });
 };
+notification.getNotificationCount = (result)=>{
+    sql.query("SELECT COUNT(*) from notification",(err,res)=>{
+        err? result(null,err): result(null,res)
+    });
+}
 notification.updateById = function(id, notification, result){
   sql.query("UPDATE notification SET name=?,class=?,description=? WHERE n_id = ?", [notification.name,notification.class,notification.description,id], function (err, res) {
           if(err) {

@@ -4,13 +4,9 @@ var sql = require('../db.js');
 //Faculty object constructor
 var Faculty = function(faculty){
     this.f_id=faculty.f_id;
-    this.faculty_name=faculty.faculty_name;
-   
-    this.email_id=faculty.email_id;
-   
+    this.faculty_name=faculty.faculty_name; 
+    this.email_id=faculty.email_id; 
     this.department=faculty.department;
-   
-
 };
 Faculty.createFaculty = function (newFaculty, result) {
         sql.query("INSERT INTO faculty set ?", newFaculty, function (err, res) {
@@ -53,18 +49,16 @@ Faculty.getFacultyById = function (facultyId, result) {
 };
 Faculty.getAllFaculty = function (result) {
         sql.query("Select * from faculty", function (err, res) {
-
-                if(err) {
-                    console.log("error: ", err);
-                    result(null, err);
-                }
-                else{
-                //   console.log('facultys : ', res);
-
-                 result(null, res);
-                }
+                err? result(null,err) : result(null,res)
             });
 };
+
+Faculty.getFacultyCount = function (result){
+    sql.query("SELECT COUNT(*) from faculty",function(err,res){
+        err? result(null,err): result(null,res)
+    });
+} 
+
 Faculty.updateById = function(id, faculty, result){
   sql.query("UPDATE faculty SET faculty_name=?,email_id=?,department=? WHERE f_id = ?", [faculty.faculty_name,faculty.email_id,faculty.department,id], function (err, res) {
           if(err) {
